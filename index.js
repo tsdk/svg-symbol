@@ -9,6 +9,14 @@ var fileName
 var svgNode
 var symbolNode
 
+function clean(ins) {
+  if (ins.attr('fill')) ins.attr('fill', 'currentColor')
+  else ins.removeAttr('fill')
+  if (ins.attr('stroke')) ins.attr('stroke', 'currentColor')
+  else ins.removeAttr('stroke')
+  ins.removeAttr('style')
+}
+
 function parse (file) {
   if (path.extname(file) === '.svg') {
     fileName = file.slice(0, -4)
@@ -21,10 +29,15 @@ function parse (file) {
     symbolNode
       .children()
       .each(function (i, kid) {
-        $(kid)
-          .removeAttr('fill')
-          .removeAttr('stroke')
-          .removeAttr('style')
+        var ins = $(kid)
+        clean(ins)
+
+        ins
+          .children()
+          .each(function (i, kid) {
+            var ins = $(kid)
+            clean(ins)
+          })
       })
     $('svg').append(symbolNode)
   }
