@@ -13,10 +13,10 @@ var symbolNode;
 
 function clean(ins) {
   var f = ins.attr('fill');
-  if (f && f.indexOf('url') > -1) ins.attr('fill', 'currentColor');
+  if (f && f.indexOf('url') === -1) ins.attr('fill', 'currentColor');
   else ins.removeAttr('fill');
   var s = ins.attr('stroke');
-  if (s && s.indexOf('url') > -1) ins.attr('stroke', 'currentColor');
+  if (s && s.indexOf('url') === -1) ins.attr('stroke', 'currentColor');
   else ins.removeAttr('stroke');
   ins.removeAttr('style');
 }
