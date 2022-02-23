@@ -1,10 +1,10 @@
 {
   "name": "svg-symbol",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "svg symbol generator",
   "main": "index.js",
   "bin": {
-    "svg-symbol": "./index.js"
+    "svg-symbol": "index.js"
   },
   "scripts": {
     "test": "tape ./test.js | tap-spec"
